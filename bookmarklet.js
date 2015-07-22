@@ -1,0 +1,1 @@
+javascript:void((function(){var e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','https://rawgit.com/mmjbot/musicjs/master/main.js');document.body.appendChild(e)})());
