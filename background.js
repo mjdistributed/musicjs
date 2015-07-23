@@ -38,13 +38,13 @@ function port_on_message(message) {
             console.log("logging song"); 
             log_song(_p.song.artist,_p.song.album_artist,
                     _p.song.album, _p.song.title,
-                    Math.round(new Date().getTime() / 1000));
+                    Math.round(new Date().getTime() / 1000), false);
         }
     }
 }
 
 
-function log_song(artist, album_artist, album, title, time) {
+function log_song(artist, album_artist, album, title, time, attempted) {
 
     var http = new XMLHttpRequest();
     var url = "http://muslogger.appspot.com/log";
@@ -59,22 +59,13 @@ function log_song(artist, album_artist, album, title, time) {
         if(http.readyState == 4 && http.status == 200) {
             alert("successfully logged on muslogger");
         }
+        // if not logged in to muslogger
+        if(http.status == 405 && !attempted) {
+            start_web_auth();
+            log_song(artist, album_artist, album, title, time, true);
+        }
     }
     http.send(params);
-/*
-    // Scrobble this song
-    lastfm_api.scrobble(artist, album_artist, album, title, time,
-        function(response) {
-            if (response.error) {
-                if (response.error == 9) {
-                    // Session expired
-                    clear_session();
-                }
-                chrome.browserAction.setIcon({
-                     'path': SETTINGS.error_icon });
-            }
-        });
-*/
 }
 
 /**
@@ -90,23 +81,14 @@ function port_on_disconnect() {
  * Authentication link from popup window
  */
 function start_web_auth() {
-    var callback_url = chrome.runtime.getURL(SETTINGS.callback_file);
+    // var callback_url = chrome.runtime.getURL(SETTINGS.callback_file);
     chrome.tabs.create({
-        'url':
-            'http://www.last.fm/api/auth?api_key=' +
-            SETTINGS.api_key +
-            '&cb=' +
-            callback_url });
-}
-
-/**
- * Clears last.fm session
- */
-function clear_session() {
-    lastfm_api.session = {};
-
-    localStorage.removeItem('session_key');
-    localStorage.removeItem('session_name');
+        'url' : 'http://www.muslogger.appspot.com/login'});
+        // 'url':
+        //     'http://www.last.fm/api/auth?api_key=' +
+        //     SETTINGS.api_key +
+        //     '&cb=' +
+        //     callback_url });
 }
 
 /**

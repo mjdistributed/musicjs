@@ -9,6 +9,7 @@
       "http://play.google.com/",
       "https://play.google.com/",
       "http://muslogger.appspot.com/log",
+      "http://muslogger.appspot.com/login",
       "https://www.google.com/accounts/ServiceLogin*",
       "https://accounts.google.com/ServiceLogin*",
       "https://appengine.google.com/_ah/conflogin?continue=http%3A%2F%2Fmuslogger*"
