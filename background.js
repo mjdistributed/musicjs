@@ -8,6 +8,8 @@
 var curr_song_title = '';
 
 
+
+
 // Connect event handlers
 chrome.runtime.onConnect.addListener(port_on_connect);
 
@@ -48,7 +50,8 @@ function log_song(artist, album_artist, album, title, time, attempted) {
 
     var http = new XMLHttpRequest();
     var url = "http://muslogger.appspot.com/log";
-    var params = "artist="+artist+"&album_artist="+album_artist+"&album="+album+"&title="+title;
+    var tz = jstz.determine().name();
+    var params = "artist="+artist+"&album_artist="+album_artist+"&album="+album+"&title="+title+"&tz="+tz;
     http.open("POST", url, true);
 
     //Send the proper header information along with the request

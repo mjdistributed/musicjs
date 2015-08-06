@@ -14,7 +14,7 @@
       "https://appengine.google.com/_ah/conflogin?continue=http%3A%2F%2Fmuslogger*"
    ],
    "background": {
-    "scripts": ["js/settings.js", "util.js", "background.js"],
+    "scripts": ["js/settings.js", "util.js", "js/inject.js", "js/jstz.min.js", "background.js"],
     "persistent": false
    },
    "icons" : {
@@ -40,8 +40,7 @@
             "*://play.google.com/music/listen*"
          ],
          "js" : [
-            "js/jquery-1.7.min.js"
-         ]
+            "js/jquery-1.7.min.js"         ]
       }
    ],
     "commands": {
