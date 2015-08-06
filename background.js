@@ -84,19 +84,6 @@ function start_web_auth() {
         'url' : 'http://www.muslogger.appspot.com/login'});
 }
 
-/**
- * Last.fm session request
- */
-function get_lastfm_session(token) {
-    lastfm_api.authorize(token, function(response) {
-        // Save session
-        if (response.session) {
-            localStorage['session_key'] = response.session.key;
-            localStorage['session_name'] = response.session.name;
-        }
-    });
-}
-
 function bind_keyboard_shortcuts() {
     chrome.commands.onCommand.addListener(
         function(command) {
