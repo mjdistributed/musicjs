@@ -14,7 +14,7 @@
       "https://appengine.google.com/_ah/conflogin?continue=http%3A%2F%2Fmuslogger*"
    ],
    "background": {
-    "scripts": ["md5.js", "js/settings.js", "util.js", "background.js"],
+    "scripts": ["js/settings.js", "util.js", "background.js"],
     "persistent": false
    },
    "icons" : {
