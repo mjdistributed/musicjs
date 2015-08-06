@@ -48,7 +48,6 @@ function log_song(artist, album_artist, album, title, time, attempted) {
 
     var http = new XMLHttpRequest();
     var url = "http://muslogger.appspot.com/log";
-    // var url = "http://localhost:11080/log";
     var params = "artist="+artist+"&album_artist="+album_artist+"&album="+album+"&title="+title;
     http.open("POST", url, true);
 
@@ -81,26 +80,8 @@ function port_on_disconnect() {
  * Authentication link from popup window
  */
 function start_web_auth() {
-    // var callback_url = chrome.runtime.getURL(SETTINGS.callback_file);
     chrome.tabs.create({
         'url' : 'http://www.muslogger.appspot.com/login'});
-        // 'url':
-        //     'http://www.last.fm/api/auth?api_key=' +
-        //     SETTINGS.api_key +
-        //     '&cb=' +
-        //     callback_url });
-}
-
-/**
- * Toggles setting to scrobble songs or not
- */
-function toggle_scrobble() {
-    SETTINGS.scrobble = !SETTINGS.scrobble;
-    localStorage['scrobble'] = SETTINGS.scrobble;
-
-    // Set the icon corresponding the current scrobble state
-    var icon = SETTINGS.scrobble ? SETTINGS.main_icon : SETTINGS.scrobbling_stopped_icon;
-    chrome.browserAction.setIcon({ 'path': icon });
 }
 
 /**
