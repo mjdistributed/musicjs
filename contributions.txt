@@ -1,0 +1,5 @@
+adapted from newline’s cloudplayer-scrobbler (last.fm scribbler extension for chrome): https://github.com/newgiin/cloudplayer-scrobbler
+
+
+footprint icon by Twitter from Twitter Emoji Project (https://commons.wikimedia.org/wiki/Category:Footprint_icons#/media/File:Twemoji_1f463.svg)
+under license from http://creativecommons.org/licenses/by/4.0/
